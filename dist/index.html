@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f2">
+  <meta name="description" content="在数字花园玩一局 2048。滑动、合并，让小小的数字不断生长。支持键盘和触屏，自动保存进度。">
+  <title>2048 · 数字花园</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23354f3b'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='36' fill='%23fff'%3E2%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <a class="brand" href="./" aria-label="2048 数字花园首页"><span class="brand-icon">2<span>✦</span></span><span>数字花园 <span class="brand-divider">/</span> <span class="brand-en">NUMBER GARDEN</span></span></a>
+      <span class="header-note"><span class="status-dot"></span>给大脑，一点游乐时间</span>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="title">
+        <div class="eyebrow"><span></span> SMALL MOVES. BIG POSSIBILITIES.</div>
+        <h1 id="title">2048<span class="title-spark" aria-hidden="true">✳</span></h1>
+        <h2>数字相遇，<br>好事成双。</h2>
+        <p class="intro-copy">滑动方块，让相同的数字合而为一。<br>从小小的 2 出发，看看你能走多远。</p>
+        <div class="number-trail" aria-hidden="true"><span>2</span><i>+</i><span>2</span><i>=</i><span class="trail-result">4</span><span class="trail-spark">✦</span></div>
+        <div class="how-to">
+          <h3>简单上手，慢慢入迷</h3>
+          <p><span class="key">↑</span><span class="key">←</span><span class="key">↓</span><span class="key">→</span><span class="key-description">方向键移动 · 手机滑动</span></p>
+          <p class="tip">每次有效移动都会出现一个新数字。<br>合成 <strong>2048</strong> 即可获胜，也可以继续挑战。</p>
+        </div>
+      </section>
+      <section class="game" aria-label="2048 游戏">
+        <div class="game-top">
+          <div class="game-caption"><span class="status-dot"></span><span id="game-caption">新的一局，新的可能</span></div>
+          <div class="scores">
+            <div class="score-card"><span>当前得分</span><strong id="score">0</strong><span id="score-gain" aria-hidden="true"></span></div>
+            <div class="score-card best-card"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v6a4 4 0 0 1-8 0V4Zm0 2H4v3a4 4 0 0 0 4 4m8-7h4v3a4 4 0 0 1-4 4m-4 1v5m-4 1h8"/></svg>最高纪录</span><strong id="best">0</strong></div>
+          </div>
+        </div>
+        <div class="board-wrap">
+          <div id="board" class="board" tabindex="0" role="group" aria-label="2048 棋盘，使用方向键移动方块">
+            <div class="board-cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div id="tiles" class="tiles"></div>
+          </div>
+          <div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title" aria-describedby="overlay-copy" hidden>
+            <span class="overlay-icon" id="overlay-icon" aria-hidden="true">✦</span>
+            <h2 id="overlay-title"></h2><p id="overlay-copy"></p>
+            <button id="continue" class="button primary">继续挑战</button>
+            <button id="overlay-undo" class="button primary">撤销一步</button>
+            <button id="overlay-new" class="button secondary">再来一局</button>
+          </div>
+        </div>
+        <div class="game-actions">
+          <button id="undo" class="button secondary" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5-5 5 5 5M4 10h10a6 6 0 0 1 0 12" transform="translate(0 -2)"/></svg>撤销一步</button>
+          <button id="restart" class="button primary"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M20 12a8 8 0 1 0-2 5M20 12l-3-5"/></svg>新的一局</button>
+        </div>
+        <div class="game-status"><span id="moves">第 0 步</span><span id="save-status"><span class="small-dot"></span>进度自动保存在本机</span></div>
+        <div class="mobile-directions" aria-label="方向控制"><button data-direction="left" aria-label="向左移动">←</button><button data-direction="up" aria-label="向上移动">↑</button><button data-direction="down" aria-label="向下移动">↓</button><button data-direction="right" aria-label="向右移动">→</button></div>
+      </section>
+    </main>
+    <footer><span>不赶时间，下一步总有惊喜。</span><span>合并一点，快乐一点 <span aria-hidden="true">✳</span></span></footer>
+  </div>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
